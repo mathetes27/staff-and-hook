@@ -8,6 +8,8 @@ import { Sermons } from './pages/Sermons';
 import { Journal } from './pages/Journal';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Landing } from './pages/Landing';
+import { Members } from './pages/Members';
 import { useAuth } from './contexts/AuthContext';
 import { LogOut } from 'lucide-react';
 
@@ -48,7 +50,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
@@ -60,12 +62,13 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       
-      <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/agenda" element={<ProtectedRoute><Agenda /></ProtectedRoute>} />
       <Route path="/tarefas" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
       <Route path="/sermoes" element={<ProtectedRoute><Sermons /></ProtectedRoute>} />
       <Route path="/diario" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
-      <Route path="/membros" element={<ProtectedRoute><div className="p-8">Módulo de Membros em breve...</div></ProtectedRoute>} />
+      <Route path="/membros" element={<ProtectedRoute><Members /></ProtectedRoute>} />
     </Routes>
   );
 }

@@ -18,7 +18,7 @@ export function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      navigate('/dashboard');
     } catch (err: any) {
       console.error(err);
       setError('Falha ao fazer login. Verifique seu e-mail e senha.');

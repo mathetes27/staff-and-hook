@@ -24,7 +24,7 @@ export function Register() {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      navigate('/dashboard');
     } catch (err: any) {
       console.error(err);
       if (err.code === 'auth/email-already-in-use') {

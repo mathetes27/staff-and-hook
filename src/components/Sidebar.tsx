@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+  { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'Agenda', path: '/agenda', icon: Calendar },
   { name: 'Tarefas', path: '/tarefas', icon: CheckSquare },
   { name: 'Sermões', path: '/sermoes', icon: BookOpen },

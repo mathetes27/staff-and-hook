@@ -7,7 +7,6 @@ import { Lock, Unlock, ShieldAlert } from 'lucide-react';
 export function PinGate({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
-  const [hasPin, setHasPin] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [pinInput, setPinInput] = useState('');
   const [error, setError] = useState('');
@@ -25,9 +24,8 @@ export function PinGate({ children }: { children: React.ReactNode }) {
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists() && docSnap.data().membersPin) {
-          setHasPin(true);
+          // Usuário já tem PIN
         } else {
-          setHasPin(false);
           setIsSettingUp(true);
         }
       } catch (err) {
@@ -83,7 +81,6 @@ export function PinGate({ children }: { children: React.ReactNode }) {
         updatedAt: new Date().toISOString()
       }, { merge: true });
       
-      setHasPin(true);
       setIsSettingUp(false);
       setIsUnlocked(true);
     } catch (err) {

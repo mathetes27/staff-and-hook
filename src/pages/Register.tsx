@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus } from 'lucide-react';
+
 
 export function Register() {
   const [email, setEmail] = useState('');

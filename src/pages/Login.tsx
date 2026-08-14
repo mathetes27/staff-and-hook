@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import { LogIn } from 'lucide-react';
+
 
 export function Login() {
   const [email, setEmail] = useState('');

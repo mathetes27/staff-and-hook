@@ -42,12 +42,12 @@ export function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-        <div className="flex flex-col items-center mb-8">
-          <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <UserPlus className="w-6 h-6 text-indigo-600" />
+        <div className="flex flex-col items-center text-center mb-8">
+          <div className="w-14 h-14 bg-indigo-50 rounded-full flex items-center justify-center mb-4 border border-indigo-100">
+            <img src="/favicon.svg" alt="Staff & Hook Logo" className="w-8 h-8" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900">Criar Conta</h2>
-          <p className="text-gray-500 text-sm mt-1">Cadastre-se no PastorTask</p>
+          <h2 className="text-3xl font-bold text-indigo-600 font-serif">Staff & Hook</h2>
+          <p className="text-gray-500 text-sm mt-1">Cadastre-se para gerenciar seu ministério</p>
         </div>
 
         {error && (

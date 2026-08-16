@@ -1,4 +1,4 @@
-import { BookHeart, BookOpen, Calendar, CheckSquare, LayoutDashboard, Menu, Users } from 'lucide-react';
+import { Book, BookOpen, Calendar, CheckSquare, LayoutDashboard, Menu, Sparkles, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 interface SidebarProps {
@@ -7,12 +7,13 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+  { name: 'Painel Geral', path: '/dashboard', icon: LayoutDashboard },
+  { name: 'Membros', path: '/membros', icon: Users },
+  { name: 'Assistente I.A.', path: '/assistant', icon: Sparkles },
   { name: 'Agenda', path: '/agenda', icon: Calendar },
   { name: 'Tarefas', path: '/tarefas', icon: CheckSquare },
   { name: 'Sermões', path: '/sermoes', icon: BookOpen },
-  { name: 'Diário', path: '/diario', icon: BookHeart },
-  { name: 'Membros', path: '/membros', icon: Users },
+  { name: 'Diário', path: '/diario', icon: Book },
 ];
 
 export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {

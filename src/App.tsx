@@ -10,6 +10,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Landing } from './pages/Landing';
 import { Members } from './pages/Members';
+import { Assistant } from './pages/Assistant';
 import { useAuth } from './contexts/AuthContext';
 import { LogOut } from 'lucide-react';
 
@@ -69,6 +70,7 @@ function App() {
       <Route path="/sermoes" element={<ProtectedRoute><Sermons /></ProtectedRoute>} />
       <Route path="/diario" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
       <Route path="/membros" element={<ProtectedRoute><Members /></ProtectedRoute>} />
+      <Route path="/assistant" element={<ProtectedRoute><Assistant /></ProtectedRoute>} />
     </Routes>
   );
 }

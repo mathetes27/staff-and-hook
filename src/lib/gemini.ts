@@ -42,8 +42,10 @@ export async function sendMessageToAssistant(
   previousInteractionId: string | null = null,
   systemInstruction?: string
 ) {
+  console.log("CHAVE API DETECTADA:", import.meta.env.VITE_GEMINI_API_KEY ? "SIM (Oculta por segurança)" : "NÃO");
+
   if (!import.meta.env.VITE_GEMINI_API_KEY) {
-    throw new Error("A chave VITE_GEMINI_API_KEY não está configurada no arquivo .env.local.");
+    throw new Error(`A chave VITE_GEMINI_API_KEY não foi lida pelo Vite. Verifique se o arquivo foi salvo.`);
   }
 
   const aiClient = new GoogleGenAI({ 

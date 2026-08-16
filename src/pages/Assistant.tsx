@@ -56,12 +56,10 @@ export function Assistant() {
 
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Ocorreu um erro ao falar com o Assistente.");
       
-      // Se for erro de API Key, dá uma dica amigável
-      if (err.message?.includes('API_KEY')) {
-        setError("Chave da API do Gemini não encontrada. Por favor, adicione a VITE_GEMINI_API_KEY no arquivo .env.local e reinicie o servidor.");
-      }
+      // Exibe a mensagem real do erro para debugar
+      setError(`Erro: ${err.message}`);
+      
     } finally {
       setLoading(false);
     }

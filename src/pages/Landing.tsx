@@ -45,10 +45,11 @@ export function Landing() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">começa na organização.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-12 font-serif italic text-balance leading-relaxed">
-            "Cuidai de vós mesmos, para que o vosso exemplo não contradiga a vossa doutrina [...] Não é suficiente ser um homem de bem; deveis ser um homem dedicado ao bem dos outros." <br />
-            <span className="text-sm font-sans font-semibold text-gray-400 mt-2 block">— Richard Baxter</span>
-          </p>
+          <div className="max-w-2xl mb-12">
+            <p className="text-gray-400 italic text-sm mb-4">
+              "O cuidado pastoral acontece na organização"
+            </p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             {user ? (

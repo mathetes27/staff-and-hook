@@ -41,13 +41,14 @@ export function Landing() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight leading-tight max-w-4xl mb-6">
-            O cuidado com o rebanho <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">começa na organização.</span>
+            O cuidado pastoral <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">acontece na organização.</span>
           </h1>
           
           <div className="max-w-2xl mb-12">
-            <p className="text-gray-400 italic text-sm mb-4">
-              "O cuidado pastoral acontece na organização"
+            <p className="text-lg md:text-xl text-gray-600 font-serif italic text-balance leading-relaxed">
+              Cuidai de vós mesmos, para que o vosso exemplo não contradiga a vossa doutrina [...] Não é suficiente ser um homem de bem; deveis ser um homem dedicado ao bem dos outros. <br />
+              <span className="text-sm font-sans font-semibold text-gray-400 mt-2 block">— Richard Baxter</span>
             </p>
           </div>
           

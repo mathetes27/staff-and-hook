@@ -24,9 +24,13 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-end px-8 shrink-0">
-          <div className="flex items-center space-x-4">
-            <span className="text-sm font-medium text-gray-600">{user?.email}</span>
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 relative">
+          <div className="flex-1"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+            <span className="text-xl font-bold text-indigo-700 font-serif tracking-tight">Staff & Hook</span>
+          </div>
+          <div className="flex-1 flex justify-end items-center space-x-4">
+            <span className="text-sm font-medium text-gray-600 hidden sm:block">{user?.email}</span>
             <button onClick={signOut} className="p-2 rounded-full hover:bg-red-50 text-gray-400 hover:text-red-500 transition-colors" title="Sair">
               <LogOut className="w-5 h-5" />
             </button>

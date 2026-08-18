@@ -19,16 +19,18 @@ const navItems = [
 export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
   return (
     <aside className={`bg-white border-r border-gray-200 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} flex flex-col shrink-0`}>
-      <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+      <div className="h-16 flex items-center justify-center relative border-b border-gray-200">
+        <div className="flex items-center justify-center w-full">
+          <img src="/favicon.svg" alt="Logo" className="w-8 h-8 drop-shadow-sm transition-transform duration-300 hover:scale-105" />
+        </div>
         {isOpen && (
-          <div className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="Logo" className="w-6 h-6" />
-            <span className="text-xl font-bold text-indigo-600 font-serif">Staff & Hook</span>
-          </div>
+          <button onClick={toggleSidebar} className="absolute right-3 p-2 rounded-md hover:bg-gray-100 text-gray-500 hover:text-indigo-600 transition-colors">
+            <Menu className="w-5 h-5" />
+          </button>
         )}
-        <button onClick={toggleSidebar} className="p-2 rounded-md hover:bg-gray-100 mx-auto">
-          <Menu className="w-6 h-6 text-gray-600" />
-        </button>
+        {!isOpen && (
+          <button onClick={toggleSidebar} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" title="Expandir menu" />
+        )}
       </div>
       <nav className="flex-1 p-4 space-y-2">
         {navItems.map((item) => (

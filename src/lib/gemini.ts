@@ -1,4 +1,3 @@
-import { GoogleGenAI } from '@google/genai';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -42,32 +41,27 @@ export async function sendMessageToAssistant(
   previousInteractionId: string | null = null,
   systemInstruction?: string
 ) {
-  console.log("CHAVE API DETECTADA:", import.meta.env.VITE_GEMINI_API_KEY ? "SIM (Oculta por segurança)" : "NÃO");
-
-  if (!import.meta.env.VITE_GEMINI_API_KEY) {
-    throw new Error(`A chave VITE_GEMINI_API_KEY não foi lida pelo Vite. Verifique se o arquivo foi salvo.`);
-  }
-
-  const aiClient = new GoogleGenAI({ 
-    apiKey: import.meta.env.VITE_GEMINI_API_KEY 
+  // Agora fazemos a chamada para o nosso próprio backend na Vercel
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      prompt,
+      previousInteractionId,
+      systemInstruction
+    })
   });
 
-  const payload: any = {
-    model: "gemini-3.6-flash",
-    input: prompt,
-  };
+  const data = await response.json();
 
-  if (previousInteractionId) {
-    payload.previous_interaction_id = previousInteractionId;
+  if (!response.ok) {
+    throw new Error(data.error || "Erro desconhecido ao falar com o backend.");
   }
 
-  if (systemInstruction) {
-    payload.system_instruction = systemInstruction;
-  }
-
-  const response = await aiClient.interactions.create(payload);
   return {
-    text: response.output_text,
-    interactionId: response.id
+    text: data.text,
+    interactionId: data.interactionId
   };
 }

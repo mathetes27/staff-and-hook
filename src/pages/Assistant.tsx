@@ -35,7 +35,7 @@ export function Assistant() {
       let systemInstruction = undefined;
       if (!interactionId) {
         const membersContext = await fetchMembersContext(user.uid);
-        systemInstruction = `Você é o "Staff & Hook+ Assistente Pastoral", um conselheiro e assistente especializado em auxiliar pastores na organização da igreja, estruturação de sermões e gestão eclesiástica. Mantenha um tom profissional, acolhedor e focado no crescimento espiritual e organizacional da congregação.
+        systemInstruction = `Você é o "Staff & Hook Assistente Pastoral", um conselheiro e assistente especializado em auxiliar pastores na organização da igreja, estruturação de sermões e gestão eclesiástica. Mantenha um tom profissional, acolhedor e focado no crescimento espiritual e organizacional da congregação.
         
         Você tem acesso à lista atual de membros da igreja. Use essa informação SOMENTE para fins organizacionais (ex: datas de nascimento, listas, endereços, etc), e não para fofocas ou conselhos invasivos.
         
@@ -66,7 +66,7 @@ export function Assistant() {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-white relative">
+    <div className="flex-1 flex flex-col h-full bg-white relative overflow-hidden">
       <header className="px-8 py-6 border-b border-gray-100 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
@@ -74,7 +74,7 @@ export function Assistant() {
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              Assistente Pastoral <span className="text-xs font-semibold bg-gradient-to-r from-amber-400 to-orange-500 text-white px-2 py-0.5 rounded-full uppercase tracking-wider">Staff & Hook+</span>
+              Assistente Pastoral
             </h1>
             <p className="text-sm text-gray-500">Inteligência Artificial conectada ao seu ministério.</p>
           </div>
@@ -143,7 +143,7 @@ export function Assistant() {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-4 sm:p-6 bg-white border-t border-gray-100">
+      <div className="p-4 sm:p-6 bg-white border-t border-gray-100 shrink-0">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto relative flex items-end gap-2">
           <textarea
             value={input}

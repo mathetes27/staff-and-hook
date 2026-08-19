@@ -107,7 +107,31 @@ export function Agenda() {
               </h3>
               
               <div className="space-y-6">
-                {[...events].sort((a,b) => a.date.getTime() - b.date.getTime()).map(event => (
+                {[...events]
+                  .filter(event => {
+                    const eventDate = new Date(event.date);
+                    if (event.time) {
+                      const [hours, minutes] = event.time.split(':').map(Number);
+                      eventDate.setHours(hours, minutes, 0, 0);
+                    } else {
+                      eventDate.setHours(23, 59, 59, 999);
+                    }
+                    return eventDate.getTime() >= new Date().getTime();
+                  })
+                  .sort((a,b) => {
+                    const dateA = new Date(a.date);
+                    const dateB = new Date(b.date);
+                    if (a.time) {
+                      const [hA, mA] = a.time.split(':').map(Number);
+                      dateA.setHours(hA, mA, 0, 0);
+                    }
+                    if (b.time) {
+                      const [hB, mB] = b.time.split(':').map(Number);
+                      dateB.setHours(hB, mB, 0, 0);
+                    }
+                    return dateA.getTime() - dateB.getTime();
+                  })
+                  .map(event => (
                   <div key={event.id} className="flex gap-4 group">
                     <div className="flex flex-col items-center min-w-[60px]">
                       <span className="text-sm font-semibold text-gray-500 uppercase">{format(event.date, 'EEE', { locale: ptBR })}</span>
@@ -143,6 +167,20 @@ export function Agenda() {
                     </div>
                   </div>
                 ))}
+                {events.filter(e => {
+                   const ed = new Date(e.date);
+                   if (e.time) {
+                     const [h, m] = e.time.split(':').map(Number);
+                     ed.setHours(h, m, 0, 0);
+                   } else {
+                     ed.setHours(23, 59, 59, 999);
+                   }
+                   return ed.getTime() >= new Date().getTime();
+                }).length === 0 && (
+                  <div className="text-center py-8">
+                    <p className="text-gray-500">Nenhum compromisso agendado.</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

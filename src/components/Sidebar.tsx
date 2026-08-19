@@ -60,8 +60,12 @@ export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
               }`
             }
           >
-            <Sparkles className={`w-6 h-6 shrink-0 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110 ${isActive ? 'text-indigo-100' : 'text-indigo-600'}`} />
-            {isOpen && <span className="font-bold tracking-wide">Assistente I.A.</span>}
+            {({ isActive }) => (
+              <>
+                <Sparkles className={`w-6 h-6 shrink-0 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110 ${isActive ? 'text-indigo-100' : 'text-indigo-600'}`} />
+                {isOpen && <span className="font-bold tracking-wide">Assistente I.A.</span>}
+              </>
+            )}
           </NavLink>
         </div>
       </nav>
